@@ -63,9 +63,11 @@ while True:
 
     elif cmd == 'E':
         print "ending..."
-        fade_out == True        # will stop when
+        fade_out == True        # will stop when volume = 0
         timestamp = time.strftime('%b %d %Y %H:%M:%S',time.localtime())
         out.write("E: " + timestamp + '\n')
+        out.flush()
+        os.fsync(out) # write to file for real
 
     elif cmd == 'V':
         print "voltage = " + rx[1:]
